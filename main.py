@@ -159,11 +159,11 @@ def show_post(post_id):
 
 @app.route("/about")
 def about():
-    return render_template("about.html", current_user=current_user)
+    return render_template("about.html")
 
 @app.route("/collection")
 def collection():
-    return render_template("collection.html", current_user=current_user)
+    return render_template("collection.html")
 
 @app.route("/contact")
 def contact():
