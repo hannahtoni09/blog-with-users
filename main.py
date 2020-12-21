@@ -161,14 +161,13 @@ def show_post(post_id):
 def about():
     return render_template("about.html")
 
-@app.route("/collection")
-def collection():
-    return render_template("collection.html")
+@app.route("/services")
+def services():
+    return render_template("services.html")
 
 @app.route("/contact")
 def contact():
     return render_template("contact.html", current_user=current_user)
-
 
 @app.route("/new-post", methods=["GET", "POST"])
 @admin_only
@@ -188,9 +187,6 @@ def add_new_post():
         return redirect(url_for("get_all_posts"))
 
     return render_template("make-post.html", form=form, current_user=current_user)
-
-
-
 
 @app.route("/edit-post/<int:post_id>", methods=["GET", "POST"])
 @admin_only
@@ -213,7 +209,6 @@ def edit_post(post_id):
 
     return render_template("make-post.html", form=edit_form, is_edit=True, current_user=current_user)
 
-
 @app.route("/delete/<int:post_id>")
 @admin_only
 def delete_post(post_id):
@@ -222,6 +217,9 @@ def delete_post(post_id):
     db.session.commit()
     return redirect(url_for('get_all_posts'))
 
+@app.route("/services/merger")
+def merger_filing():
+    return render_template("merger-filing.html")
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=5000)
